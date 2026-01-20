@@ -22,10 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    # for windows and macos
-    "tensorflow<2.20; sys_platform == 'win32' or sys_platform == 'darwin'",
-    # for linux
-    "tensorflow[and-cuda]<2.20; sys_platform == 'linux'",
+    "tensorflow<2.20",
     "tf_keras",  # Required for legacy Keras API. Users may need to set TF_USE_LEGACY_KERAS=1
     "scipy",
     "matscipy",
@@ -36,6 +33,12 @@ dependencies = [
     "pyyaml>=6.0.2",
     "tqdm",
 ]
+
+[project.optional-dependencies]
+cuda = [
+    "tensorflow[and-cuda]<2.20; sys_platform == 'linux'",
+]
+
 [project.urls]
 "Homepage" = "https://github.com/ICAMS/grace-tensorpotential"
 
